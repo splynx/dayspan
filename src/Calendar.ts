@@ -13,6 +13,8 @@ import { CalendarDay } from './CalendarDay';
 import { CalendarEvent } from './CalendarEvent';
 import { Iterator, IteratorAction } from './Iterator';
 
+// @ts-ignore
+import * as moment from 'moment';
 
 /**
  * A function which moves a given day by some amount and some unit. This is
@@ -1409,4 +1411,26 @@ export class Calendar<T, M>
     }
   };
 
+  /**
+   * Set locale for moment
+   * @param locale
+   */
+  public static setLocale(locale: string)
+  {
+    moment.locale(locale);
+  }
+
+  /**
+   * Set first day of week for moment
+   * @param day
+   */
+  public static setFirstDayOfWeek(day: number)
+  {
+    moment.updateLocale(moment.locale(), {
+      week : {
+        dow : day,
+        doy : 7 + day - 1
+      }
+    });
+  }
 }

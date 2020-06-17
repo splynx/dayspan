@@ -5179,6 +5179,8 @@ var CalendarEvent_CalendarEvent = (function () {
 
 
 // CONCATENATED MODULE: ./src/Calendar.ts
+/* harmony import */ var Calendar___WEBPACK_IMPORTED_MODULE_10_moment__ = __webpack_require__(0);
+/* harmony import */ var Calendar___WEBPACK_IMPORTED_MODULE_10_moment___default = __webpack_require__.n(Calendar___WEBPACK_IMPORTED_MODULE_10_moment__);
 
 
 
@@ -5189,6 +5191,8 @@ var CalendarEvent_CalendarEvent = (function () {
 
 
 
+
+// @ts-ignore
 
 /**
  * A collection of [[CalendarDay]]s, the events on the calendar, and all
@@ -6139,6 +6143,25 @@ var Calendar_Calendar = (function () {
         if (around === void 0) { around = Day_Day.today(); }
         if (focus === void 0) { focus = 0.4999; }
         return this.forType(Units.YEAR, years, around, focus, input);
+    };
+    /**
+     * Set locale for moment
+     * @param locale
+     */
+    Calendar.setLocale = function (locale) {
+        Calendar___WEBPACK_IMPORTED_MODULE_10_moment__["locale"](locale);
+    };
+    /**
+     * Set first day of week for moment
+     * @param day
+     */
+    Calendar.setFirstDayOfWeek = function (day) {
+        Calendar___WEBPACK_IMPORTED_MODULE_10_moment__["updateLocale"](Calendar___WEBPACK_IMPORTED_MODULE_10_moment__["locale"](), {
+            week: {
+                dow: day,
+                doy: 7 + day - 1
+            }
+        });
     };
     /**
      * A map of functions and properties by [[Units]] used to create or morph
